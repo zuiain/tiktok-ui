@@ -1,16 +1,10 @@
+import { useRoutes } from 'react-router-dom';
+import { publicRoutes } from '~/routes';
+
 function App() {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                    Learn React
-                </a>
-            </header>
-        </div>
-    );
+    const public_routes = useRoutes(publicRoutes);
+
+    return <div className="App">{public_routes}</div>;
 }
 
 export default App;
