@@ -8,10 +8,11 @@
     width: var(--default-layout-width);
     min-height: 1000px;
     display: flex;
+    margin-top: 3px;
 }
 
 .content {
     flex: 1;
-    background-color: #ccc;
+    background-color: #edeaea;
     min-height: 1000px;
 }

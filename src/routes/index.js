@@ -3,13 +3,14 @@ import FollowingRoutes from './FollowingRoutes';
 import ProfileRoutes from './ProfileRoutes';
 import UploadRoutes from './UploadRoutes';
 import SearchRoutes from './SearchRoutes';
+
+// pages
+import HomePage from '~/pages/Home';
 import NotFound from '~/pages/Error';
 
 // layout
 import { DefaultLayout, HeaderOnly } from '~/components/Layouts';
 
-// pages
-import HomePage from '~/pages/Home';
 // Public Routes
 const publicRoutes = [
     {
