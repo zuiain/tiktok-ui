@@ -1,5 +1,4 @@
 // routes
-import HomeRoutes from './HomeRoutes';
 import FollowingRoutes from './FollowingRoutes';
 import ProfileRoutes from './ProfileRoutes';
 import UploadRoutes from './UploadRoutes';
@@ -9,13 +8,15 @@ import NotFound from '~/pages/Error';
 // layout
 import { DefaultLayout, HeaderOnly } from '~/components/Layouts';
 
+// pages
+import HomePage from '~/pages/Home';
 // Public Routes
 const publicRoutes = [
     {
         element: <DefaultLayout />,
         children: [
             { path: '*', element: <NotFound /> },
-            { path: '/', element: <HomeRoutes /> },
+            { path: '/', element: <HomePage /> },
             { path: '/following/*', element: <FollowingRoutes /> },
             { path: '/profile/*', element: <ProfileRoutes /> },
         ],
