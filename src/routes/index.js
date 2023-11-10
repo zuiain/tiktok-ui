@@ -14,10 +14,10 @@ const publicRoutes = [
     {
         element: <DefaultLayout />,
         children: [
-            { path: '*', element: <HomeRoutes /> },
+            { path: '*', element: <NotFound /> },
+            { path: '/', element: <HomeRoutes /> },
             { path: '/following/*', element: <FollowingRoutes /> },
             { path: '/profile/*', element: <ProfileRoutes /> },
-            { path: '/*', element: <NotFound /> },
         ],
     },
     {

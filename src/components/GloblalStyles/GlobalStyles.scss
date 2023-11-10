@@ -5,7 +5,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,200;0,300;0,400;0,500;0,600;1,200;1,300;1,400;1,500;1,600&display=swap');
 
 :root {
-    --primary-color: #fe2c55;
+    --primary-color: #d62e50;
+    --black-color: black;
+    --text-color: #333;
+    --gray-color-rgb: 22, 24, 35;
 
     // Default Layout
     --default-layout-header-height: 60px;
@@ -27,4 +30,17 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+    color: var(--text-color);
+}
+
+button,
+input,
+[tabindex] {
+    border: none;
+    outline: none;
+}
+
+a[href] {
+    color: var(--text-color);
+    text-decoration: none;
 }
