@@ -4,10 +4,12 @@ import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-s
 import Tippy from '@tippyjs/react/headless';
 import classname from 'classnames/bind';
 
-import PopperWrapper from '~/components/Layouts/components/Popper';
-import styles from './Header.module.scss';
 import images from '~/assets/images';
+import styles from './Header.module.scss';
+import PopperWrapper from '../Popper';
 import AccountItem from '../AccountItem';
+import Button from '../Button';
+import { Link } from 'react-router-dom';
 
 const cx = classname.bind(styles);
 
@@ -28,7 +30,9 @@ function Header() {
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
-                    <img src={images.logo} alt="Tik Tok" />
+                    <Link to="/">
+                        <img src={images.logo} alt="Tik Tok" />
+                    </Link>
                 </div>
                 <Tippy
                     interactive={true}
@@ -55,7 +59,14 @@ function Header() {
                         </button>
                     </div>
                 </Tippy>
-                <div className={cx('action')}>Action</div>
+                <div className={cx('action')}>
+                    <Button text to="./upload">
+                        Upload
+                    </Button>
+                    <Button primary onClick={() => alert('ok')}>
+                        Log in
+                    </Button>
+                </div>
             </div>
         </header>
     );
