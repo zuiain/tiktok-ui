@@ -17,9 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-
-.logo {
+    padding: 0px var(--default-layout-horizontal-spacer);
 }
 
 .search {
@@ -106,4 +104,5 @@
     margin-left: 20px;
     padding: 4px 20px;
     background-color: transparent;
+    cursor: pointer;
 }

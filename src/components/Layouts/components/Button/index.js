@@ -23,6 +23,7 @@ function Button({
     className,
     // Nội dung button
     children,
+    // props còn lại
     ...rest
 }) {
     let Comp = 'button';

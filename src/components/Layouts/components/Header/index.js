@@ -25,6 +25,30 @@ const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                    children: {
+                        title: 'English',
+                        data: [{ title: 'English 2' }, { title: 'English 3' }],
+                    },
+                },
+                {
+                    type: 'language',
+                    code: 'vn',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                },
+            ],
+        },
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -87,9 +111,7 @@ function Header() {
                     <Button text to="./upload">
                         Upload
                     </Button>
-                    <Button primary onClick={() => alert('ok')}>
-                        Log in
-                    </Button>{' '}
+                    <Button primary>Log in</Button>
                     <Menu items={MENU_ITEMS}>
                         <button className={cx('more-button')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
