@@ -3,6 +3,7 @@ import FollowingRoutes from './FollowingRoutes';
 import ProfileRoutes from './ProfileRoutes';
 import UploadRoutes from './UploadRoutes';
 import SearchRoutes from './SearchRoutes';
+import FeedbackRoutes from './FeedbackRoute';
 
 // pages
 import HomePage from '~/pages/Home';
@@ -27,7 +28,10 @@ const publicRoutes = [
         children: [{ path: '/upload/*', element: <UploadRoutes /> }],
     },
     {
-        children: [{ path: '/search/*', element: <SearchRoutes /> }],
+        children: [
+            { path: '/search/*', element: <SearchRoutes /> },
+            { path: '/feedback/*', element: <FeedbackRoutes /> },
+        ],
     },
 ];
 

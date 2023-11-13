@@ -6,16 +6,22 @@ const cx = classNames.bind(style);
 function Button({
     to,
     href,
+    // Các dạng buttons
     text = false,
     primary = false,
     outline = false,
     rounded = false,
+    // Các kích thước buttons, default là medium
     small = false,
     large = false,
+    // Trạng thái button
     disabled = false,
+    // Icon cho button
     leftIcon = false,
     rightIcon = false,
+    // Thêm custom class cho button
     className,
+    // Nội dung button
     children,
     ...rest
 }) {
