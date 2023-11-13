@@ -1,11 +1,22 @@
 .menu-list {
     width: 224px;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: '';
+        top: -21px;
+        right: 10px;
+        border-width: 11px 13px;
+        border-style: solid;
+        border-color: transparent transparent var(--white-color) transparent;
+    }
 
     .menu-box {
         padding: 10px 0px;
 
         .main-menu {
-            max-height: 400px;
+            max-height: 200px;
             overflow: auto;
         }
 

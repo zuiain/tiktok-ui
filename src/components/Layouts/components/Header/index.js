@@ -44,8 +44,28 @@ const MENU_ITEMS = [
                 },
                 {
                     type: 'language',
-                    code: 'en',
-                    title: 'English',
+                    code: 'tl',
+                    title: 'Thailand',
+                },
+                {
+                    type: 'language',
+                    code: 'laos',
+                    title: 'Laos',
+                },
+                {
+                    type: 'language',
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    type: 'language',
+                    code: 'jn',
+                    title: 'Japanese',
+                },
+                {
+                    type: 'language',
+                    code: 'kr',
+                    title: 'Korean',
                 },
             ],
         },
