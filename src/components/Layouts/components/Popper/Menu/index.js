@@ -7,14 +7,14 @@ import HeaderMenu from './Header';
 import { useState } from 'react';
 
 const cx = classname.bind(styles);
-const defaultFNC = () => {};
 
-function Menu({ items = [], onChange = defaultFNC, children }) {
+function Menu({ items = [], children }) {
     const [listMenu, setListMenu] = useState([{ data: items }]);
-    const current = listMenu[listMenu.length - 1];
-    console.log(onChange);
+    const currentMenu = listMenu[listMenu.length - 1];
+    console.log(items);
+    console.log(currentMenu);
     const renderItems = () => {
-        return current.data.map((item, index) => {
+        return currentMenu.data.map((item, index) => {
             const isParent = !!item.children;
             return (
                 <MenuItem
@@ -32,16 +32,17 @@ function Menu({ items = [], onChange = defaultFNC, children }) {
 
     return (
         <Tippy
-            visible
+            offset={[10, 10]}
             delay={[0, 1000]}
             interactive
             placement="bottom-end"
+            onHide={() => setListMenu((pre) => pre.slice(0, 1))}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx('menu-box')}>
                         {listMenu.length > 1 && (
                             <HeaderMenu
-                                title={current.title}
+                                title={currentMenu.title}
                                 onBack={() => {
                                     setListMenu((pre) => pre.slice(0, pre.length - 1));
                                 }}

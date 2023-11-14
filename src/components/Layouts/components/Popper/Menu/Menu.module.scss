@@ -6,8 +6,8 @@
         position: absolute;
         content: '';
         top: -21px;
-        right: 10px;
-        border-width: 11px 13px;
+        right: 13px;
+        border-width: 14px 13px;
         border-style: solid;
         border-color: transparent transparent var(--white-color) transparent;
     }
@@ -16,7 +16,7 @@
         padding: 10px 0px;
 
         .main-menu {
-            max-height: 200px;
+            max-height: 400px;
             overflow: auto;
         }
 
@@ -32,6 +32,10 @@
             &:hover {
                 background-color: rgba(var(--gray-color-rgb), 0.05);
             }
+        }
+
+        .separate {
+            border-top: 1px solid rgba(var(--gray-color-rgb), 0.2);
         }
     }
 }
