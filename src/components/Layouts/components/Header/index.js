@@ -39,15 +39,15 @@ function Header() {
     }, []);
 
     const [currentUser, setCurrentUser] = useState(false);
-    // useEffect(() => {
-    //     const timerId = setTimeout(() => {
-    //         setCurrentUser(true);
-    //     }, 5000);
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+            setCurrentUser(true);
+        }, 5000);
 
-    //     return () => {
-    //         clearTimeout(timerId);
-    //     };
-    // }, []);
+        return () => {
+            clearTimeout(timerId);
+        };
+    }, []);
 
     return (
         <header className={cx('wrapper')}>

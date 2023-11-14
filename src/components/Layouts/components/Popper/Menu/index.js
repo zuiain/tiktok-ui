@@ -4,12 +4,17 @@ import styles from './Menu.module.scss';
 import PopperWrapper from '../';
 import MenuItem from './MenuItem';
 import HeaderMenu from './Header';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const cx = classname.bind(styles);
 
 function Menu({ items = [], children }) {
     const [listMenu, setListMenu] = useState([{ data: items }]);
+
+    useEffect(() => {
+        setListMenu([{ data: items }]);
+    }, [items]);
+
     const currentMenu = listMenu[listMenu.length - 1];
     console.log(items);
     console.log(currentMenu);
