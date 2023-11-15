@@ -112,6 +112,7 @@
     font-size: 2.2rem;
     padding: 4px 12px;
     cursor: pointer;
+    position: relative;
 }
 
 .more-button {
@@ -120,6 +121,18 @@
     padding: 4px 20px;
     background-color: transparent;
     cursor: pointer;
+}
+.message {
+    width: 22px;
+    height: 18px;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    color: var(--white-color);
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    background-color: var(--primary-color);
+    border-radius: 999px;
 }
 
 .user-avatar {

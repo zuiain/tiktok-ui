@@ -16,17 +16,15 @@ function Menu({ items = [], children }) {
     }, [items]);
 
     const currentMenu = listMenu[listMenu.length - 1];
-    console.log(items);
-    console.log(currentMenu);
+
     const renderItems = () => {
         return currentMenu.data.map((item, index) => {
-            const isParent = !!item.children;
             return (
                 <MenuItem
                     key={index}
                     data={item}
                     onClick={() => {
-                        if (isParent) {
+                        if (!!item.children) {
                             setListMenu((pre) => [...pre, item.children]);
                         }
                     }}

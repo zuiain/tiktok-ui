@@ -5,23 +5,17 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import classname from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCircleXmark,
-    faCloudUpload,
-    faEllipsisVertical,
-    faMagnifyingGlass,
-    faPlaneDeparture,
-    faSpinner,
-} from '@fortawesome/free-solid-svg-icons';
-import { faMessage } from '@fortawesome/free-regular-svg-icons';
+import { faCircleXmark, faEllipsisVertical, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
+import { MENU_ITEMS, userMenu } from './Menu';
+import { FlyIcon, MessageIcon, UploadIcon } from '../Icons';
 import images from '~/assets/images';
 import styles from './Header.module.scss';
 import PopperWrapper from '../Popper';
 import Menu from '../Popper/Menu';
 import AccountItem from '../AccountItem';
 import Button from '../Button';
-import { MENU_ITEMS, userMenu } from './Menu';
+import Image from '../Image';
 
 const cx = classname.bind(styles);
 
@@ -38,16 +32,7 @@ function Header() {
         };
     }, []);
 
-    const [currentUser, setCurrentUser] = useState(false);
-    useEffect(() => {
-        const timerId = setTimeout(() => {
-            setCurrentUser(true);
-        }, 5000);
-
-        return () => {
-            clearTimeout(timerId);
-        };
-    }, []);
+    const [user] = useState({ connect: true, numberMessage: 3 });
 
     return (
         <header className={cx('wrapper')}>
@@ -83,21 +68,22 @@ function Header() {
                     </div>
                 </HeadlessTippy>
                 <div className={cx('action')}>
-                    {currentUser ? (
+                    {user.connect ? (
                         <>
                             <Tippy content="Upload Video" placement="bottom" delay={[0, 300]}>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
                                 </button>
                             </Tippy>
                             <Tippy content="Send mail" placement="bottom" delay={[0, 300]}>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faPlaneDeparture} />
+                                    <FlyIcon width="32rem" height="32rem" />
                                 </button>
                             </Tippy>
                             <Tippy content="Message" placement="bottom" delay={[0, 300]}>
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faMessage} />
+                                    <span className={cx('message')}>{user.numberMessage}</span>
+                                    <MessageIcon width="32rem" height="32rem" />
                                 </button>
                             </Tippy>
                         </>
@@ -109,12 +95,13 @@ function Header() {
                             <Button primary>Log in</Button>
                         </>
                     )}
-                    <Menu items={currentUser ? userMenu : MENU_ITEMS}>
-                        {currentUser ? (
-                            <img
+                    <Menu items={user.connect ? userMenu : MENU_ITEMS}>
+                        {user.connect ? (
+                            <Image
                                 className={cx('user-avatar')}
-                                src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-euttp/95a7a425b16361c55b1d7fca778abd7d~c5_100x100.jpeg?x-expires=1700103600&x-signature=YaXoHaGvPh6nXhke3U%2BPw3l7wh8%3D"
+                                src="ahttps://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-euttp/95a7a425b16361c55b1d7fca778abd7d~c5_100x100.jpeg?x-expires=1700103600&x-signature=YaXoHaGvPh6nXhke3U%2BPw3l7wh8%3D"
                                 alt="nguyen van a"
+                                fallback="https://i.pinimg.com/474x/38/50/1b/38501b71a75d80ffbfd9291d0b3f75ee.jpg"
                             />
                         ) : (
                             <button className={cx('more-button')}>

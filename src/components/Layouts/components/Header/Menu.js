@@ -48,6 +48,36 @@ const MENU_ITEMS = [
                     code: 'kr',
                     title: 'Korean',
                 },
+                {
+                    type: 'language',
+                    code: 'vn',
+                    title: 'Tiếng Việt',
+                },
+                {
+                    type: 'language',
+                    code: 'tl',
+                    title: 'Thailand',
+                },
+                {
+                    type: 'language',
+                    code: 'laos',
+                    title: 'Laos',
+                },
+                {
+                    type: 'language',
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    type: 'language',
+                    code: 'jn',
+                    title: 'Japanese',
+                },
+                {
+                    type: 'language',
+                    code: 'kr',
+                    title: 'Korean',
+                },
             ],
         },
     },
@@ -82,7 +112,7 @@ const userMenu = [
     {
         icon: <FontAwesomeIcon icon={faSignOut} />,
         title: 'Log Out',
-        to: './profile',
+        to: './logout',
         separate: true,
     },
 ];
