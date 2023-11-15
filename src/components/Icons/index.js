@@ -1,5 +1,6 @@
 import images from '~/assets/images';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 const UploadIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => {
     return (
         <>
@@ -7,6 +8,7 @@ const UploadIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => {
                 className={className}
                 width={width}
                 height={height}
+                fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
             >
@@ -27,6 +29,7 @@ const FlyIcon = ({ className, width = '5rem', height = '5rem' }) => {
         </>
     );
 };
+
 const MessageIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => {
     return (
         <>
@@ -34,4 +37,27 @@ const MessageIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => {
         </>
     );
 };
-export { UploadIcon, FlyIcon, MessageIcon };
+
+const XMarkIcon = ({ className, width = '1.6rem', height = '1.6rem' }) => {
+    return (
+        <>
+            <FontAwesomeIcon icon={faCircleXmark} className={className} width={width} height={height} />
+        </>
+    );
+};
+const SpinnerIcon = ({ className, width = '1.6rem', height = '1.6rem' }) => {
+    return (
+        <>
+            <FontAwesomeIcon icon={faSpinner} className={className} width={width} height={height} />
+        </>
+    );
+};
+const SearchIcon = ({ className, width = '1.6rem', height = '1.6rem' }) => {
+    return (
+        <>
+            <FontAwesomeIcon icon={faMagnifyingGlass} className={className} width={width} height={height} />
+        </>
+    );
+};
+
+export { UploadIcon, FlyIcon, MessageIcon, XMarkIcon, SpinnerIcon, SearchIcon };
