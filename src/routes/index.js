@@ -8,6 +8,7 @@ import FeedbackRoutes from './FeedbackRoute';
 // pages
 import HomePage from '~/pages/Home';
 import NotFound from '~/pages/Error';
+import AccountPage from '~/pages/Account';
 
 // layout
 import { DefaultLayout, HeaderOnly } from '~/components/Layouts';
@@ -17,7 +18,6 @@ const publicRoutes = [
     {
         element: <DefaultLayout />,
         children: [
-            { path: '*', element: <NotFound /> },
             { path: '/', element: <HomePage /> },
             { path: '/following/*', element: <FollowingRoutes /> },
             { path: '/profile/*', element: <ProfileRoutes /> },
@@ -25,7 +25,11 @@ const publicRoutes = [
     },
     {
         element: <HeaderOnly />,
-        children: [{ path: '/upload/*', element: <UploadRoutes /> }],
+        children: [
+            { path: '/@:nickname', element: <AccountPage /> },
+            { path: '/upload/*', element: <UploadRoutes /> },
+            { path: '*', element: <NotFound /> },
+        ],
     },
     {
         children: [

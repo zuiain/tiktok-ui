@@ -5,7 +5,7 @@ import classname from 'classnames/bind';
 import PopperWrapper from '~/components/Popper';
 import AccountItem from '~/components/AccountItem';
 import styles from './Search.module.scss';
-import { XMarkIcon, SearchIcon } from '~/components/Icons';
+import { XMarkIcon, SearchIcon, SpinnerIcon } from '~/components/Icons';
 
 const cx = classname.bind(styles);
 
@@ -13,23 +13,40 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [showResults, setShowResults] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const inputRef = useRef();
 
     useEffect(() => {
-        const idTimer = setTimeout(() => {
-            setSearchResult([1, 2, 3, 4]);
-        }, 0);
+        if (!searchValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
 
-        return () => {
-            clearTimeout(idTimer);
-        };
-    }, []);
+        setLoading(true);
+
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+            .then((res) => res.json())
+            .then((res) => {
+                setSearchResult(res.data);
+                setLoading(false);
+            })
+            .catch((err) => {
+                setLoading(false);
+                console.error(err);
+            });
+    }, [searchValue]);
 
     const handleClear = () => {
         setSearchValue('');
         setSearchResult([]);
         inputRef.current.focus();
+    };
+
+    const handleKeyUp = (e) => {
+        if (e.code === 'Space' && searchValue === ' ') {
+            setSearchValue('');
+        }
     };
 
     const handleHideResults = () => {
@@ -47,7 +64,8 @@ function Search() {
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
                             <h4 className={cx('search-title')}>Accounts</h4>
-                            <AccountItem /> <AccountItem /> <AccountItem /> <AccountItem />
+                            {searchResult.length > 0 &&
+                                searchResult.map((res) => <AccountItem data={res} key={res.id} />)}
                         </PopperWrapper>
                     </div>
                 )}
@@ -59,14 +77,15 @@ function Search() {
                         placeholder="Search accounts and videos"
                         spellCheck={false}
                         onChange={(e) => setSearchValue(e.target.value)}
+                        onKeyUp={handleKeyUp}
                         onFocus={() => setShowResults(true)}
                     />
-                    {!!searchValue && (
+                    {!!searchValue && !loading && (
                         <button className={cx('clear')} onClick={handleClear}>
                             <XMarkIcon />
                         </button>
                     )}
-                    {/* <SpinnerIcon className={cx('loading')} /> */}
+                    {loading && <SpinnerIcon className={cx('loading')} />}
                     <span className={cx('span-spliter')}></span>
                     <button className={cx('search-btn')}>
                         <SearchIcon />
