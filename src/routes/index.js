@@ -26,7 +26,7 @@ const publicRoutes = [
     {
         element: <HeaderOnly />,
         children: [
-            { path: '/@:nickname', element: <AccountPage /> },
+            { path: '/:nickname', element: <AccountPage /> },
             { path: '/upload/*', element: <UploadRoutes /> },
             { path: '*', element: <NotFound /> },
         ],
