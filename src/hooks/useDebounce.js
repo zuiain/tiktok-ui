@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
 // nhận 2 đối số -  giá trị và độ trễ
 // sau thời gian độ trễ -> giá trị sẽ được tạo
