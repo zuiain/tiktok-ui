@@ -8,13 +8,14 @@ import { useState, useEffect } from 'react';
 
 const cx = classname.bind(styles);
 
-function Menu({ items = [], children }) {
-    const [listMenu, setListMenu] = useState([{ data: items }]);
+function Menu({ items = [], hideOnClick = false, children }) {
+    const [listMenu, setListMenu] = useState([{ data: items, title: 'AAAAAAAAAAAAAA' }]);
 
     useEffect(() => {
         setListMenu([{ data: items }]);
     }, [items]);
 
+    // menu hiện tại - menu cuối cùng của dãy
     const currentMenu = listMenu[listMenu.length - 1];
 
     const renderItems = () => {
@@ -39,7 +40,7 @@ function Menu({ items = [], children }) {
             delay={[0, 1000]}
             interactive
             placement="bottom-end"
-            onHide={() => setListMenu((pre) => pre.slice(0, 1))}
+            hideOnClick={hideOnClick}
             render={(attrs) => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <PopperWrapper className={cx('menu-box')}>
@@ -55,6 +56,7 @@ function Menu({ items = [], children }) {
                     </PopperWrapper>
                 </div>
             )}
+            onHide={() => setListMenu((pre) => pre.slice(0, 1))}
         >
             {children}
         </Tippy>

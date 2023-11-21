@@ -7,7 +7,7 @@ import AccountItem from '~/components/AccountItem';
 import styles from './Search.module.scss';
 import { XMarkIcon, SearchIcon, SpinnerIcon } from '~/components/Icons';
 import { useDebounce } from '~/hooks';
-import * as searchServices from '~/api-services/searchServices';
+import * as searchServices from '~/apiServices/searchServices';
 
 const cx = classname.bind(styles);
 
@@ -29,17 +29,18 @@ function Search() {
         const fetchApi = async () => {
             setLoading(true);
             const searchResult = await searchServices.search(debounced);
-            if (searchResult) {
+            if (searchResult.length > 0) {
                 setSearchResult(searchResult);
                 setLoading(false);
             } else {
+                alert('Không có kết quả trả về :)) ');
                 setLoading(false);
             }
         };
 
         fetchApi();
 
-        //fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`) ...
+        //encodeURIComponent -- chuyển ký tự đặc biệt như &, ^ , # sang kiểu khác tránh làm lỗi url
     }, [debounced]);
 
     const handleClear = () => {
@@ -48,19 +49,27 @@ function Search() {
         inputRef.current.focus();
     };
 
-    const handleKeyUp = (e) => {
-        if (e.code === 'Space' && searchValue === ' ') {
-            setSearchValue('');
-        }
-    };
+    // const handleKeyUp = (e) => {
+    //     if (e.code === 'Space' && searchValue === ' ') {
+    //         setSearchValue('');
+    //     }
+    // };
 
     const handleHideResults = () => {
         setShowResults(false);
     };
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setSearchValue(searchValue);
+        }
+    };
+
     return (
         <>
             <HeadlessTippy
+                appendTo={() => document.body}
                 placement="bottom"
                 interactive={true}
                 visible={showResults && searchResult.length > 0}
@@ -81,8 +90,8 @@ function Search() {
                         value={searchValue}
                         placeholder="Search accounts and videos"
                         spellCheck={false}
-                        onChange={(e) => setSearchValue(e.target.value)}
-                        onKeyUp={handleKeyUp}
+                        onChange={handleChange}
+                        // onKeyUp={handleKeyUp}
                         onFocus={() => setShowResults(true)}
                     />
                     {!!searchValue && !loading && (
@@ -92,7 +101,7 @@ function Search() {
                     )}
                     {loading && <SpinnerIcon className={cx('loading')} />}
                     <span className={cx('span-spliter')}></span>
-                    <button className={cx('search-btn')}>
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                         <SearchIcon />
                     </button>
                 </div>

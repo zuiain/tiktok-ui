@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins, faEarthAsia, faGear, faKeyboard, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 import { faCircleQuestion } from '@fortawesome/free-regular-svg-icons';
 
-const MENU_ITEMS = [
+const defaultMenu = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia} />,
         title: 'English',
@@ -78,6 +78,46 @@ const MENU_ITEMS = [
                     code: 'kr',
                     title: 'Korean',
                 },
+                {
+                    type: 'language',
+                    code: 'laos',
+                    title: 'Laos',
+                },
+                {
+                    type: 'language',
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    type: 'language',
+                    code: 'jn',
+                    title: 'Japanese',
+                },
+                {
+                    type: 'language',
+                    code: 'kr',
+                    title: 'Korean',
+                },
+                {
+                    type: 'language',
+                    code: 'laos',
+                    title: 'Laos',
+                },
+                {
+                    type: 'language',
+                    code: 'cn',
+                    title: 'Chinese',
+                },
+                {
+                    type: 'language',
+                    code: 'jn',
+                    title: 'Japanese',
+                },
+                {
+                    type: 'language',
+                    code: 'kr',
+                    title: 'Korean',
+                },
             ],
         },
     },
@@ -108,7 +148,7 @@ const userMenu = [
         title: 'Settings',
         to: './settings',
     },
-    ...MENU_ITEMS,
+    ...defaultMenu,
     {
         icon: <FontAwesomeIcon icon={faSignOut} />,
         title: 'Log Out',
@@ -117,4 +157,4 @@ const userMenu = [
     },
 ];
 
-export { MENU_ITEMS, userMenu };
+export { defaultMenu, userMenu };
