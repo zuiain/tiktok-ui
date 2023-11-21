@@ -7,7 +7,7 @@ import AccountItem from '~/components/AccountItem';
 import styles from './Search.module.scss';
 import { XMarkIcon, SearchIcon, SpinnerIcon } from '~/components/Icons';
 import { useDebounce } from '~/hooks';
-import * as searchServices from '~/apiServices/searchServices';
+import * as searchServices from '~/services/searchService';
 
 const cx = classname.bind(styles);
 

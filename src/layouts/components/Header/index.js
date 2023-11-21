@@ -6,7 +6,7 @@ import classname from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 
-import { defaultMenu, userMenu } from '~/config/Menu';
+import config from '~/config';
 import { FlyIcon, MessageIcon, UploadIcon } from '~/components/Icons';
 import images from '~/assets/images';
 import styles from './Header.module.scss';
@@ -14,7 +14,6 @@ import Menu from '~/components/Popper/Menu';
 import Button from '~/components/Button';
 import Image from '~/components/Image';
 import Search from '../Search';
-import routes from '~/config/routes';
 
 const cx = classname.bind(styles);
 
@@ -24,7 +23,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to={routes.home} className={cx('logo-link')}>
+                <Link to={config.routes.home} className={cx('logo-link')}>
                     <img src={images.logo} alt="Tik Tok" />
                 </Link>
 
@@ -58,7 +57,7 @@ function Header() {
                             <Button primary>Log in</Button>
                         </>
                     )}
-                    <Menu items={user.connect ? userMenu : defaultMenu}>
+                    <Menu items={user.connect ? config.menu.userMenu : config.menu.defaultMenu}>
                         {user.connect ? (
                             <Image
                                 className={cx('user-avatar')}

@@ -10,11 +10,11 @@ import HomePage from '~/pages/Home';
 import NotFound from '~/pages/Error';
 import AccountPage from '~/pages/Account';
 
-// layout
-import { DefaultLayout, HeaderOnly } from '~/components/Layouts';
+// layouts
+import { DefaultLayout, HeaderOnly } from '~/layouts';
 
-// routesConfig
-import routes from '~/config/routes';
+// config
+import config from '~/config';
 
 // Public Routes
 const publicRoutes = [
@@ -22,27 +22,28 @@ const publicRoutes = [
         element: <DefaultLayout />,
         children: [
             { path: '/', element: <HomePage /> },
-            { path: routes.home, element: <HomePage /> },
-            { path: routes.following, element: <FollowingRoutes /> },
-            { path: routes.profile, element: <ProfileRoutes /> },
+            { path: config.routes.home, element: <HomePage /> },
+            { path: config.routes.following, element: <FollowingRoutes /> },
+            { path: config.routes.profile, element: <ProfileRoutes /> },
         ],
     },
     {
         element: <HeaderOnly />,
         children: [
-            { path: routes.account, element: <AccountPage /> },
-            { path: routes.upload, element: <UploadRoutes /> },
+            { path: config.routes.account, element: <AccountPage /> },
+            { path: config.routes.upload, element: <UploadRoutes /> },
             { path: '*', element: <NotFound /> },
         ],
     },
     {
         children: [
-            { path: routes.search, element: <SearchRoutes /> },
-            { path: routes.feedback, element: <FeedbackRoutes /> },
+            { path: config.routes.search, element: <SearchRoutes /> },
+            { path: config.routes.feedback, element: <FeedbackRoutes /> },
         ],
     },
 ];
 
+// Private routes
 const privateRoutes = [];
 
 export { publicRoutes, privateRoutes };
