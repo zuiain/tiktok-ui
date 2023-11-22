@@ -1,6 +1,7 @@
 import images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+
 const UploadIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => {
     return (
         <>

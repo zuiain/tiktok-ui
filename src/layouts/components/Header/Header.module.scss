@@ -21,8 +21,13 @@
     padding: 0px var(--default-layout-horizontal-spacer);
 }
 
-.logo-link {
-    display: flex;
+.logo {
+    min-width: 280px;
+
+    .logo-link {
+        display: flex;
+        max-width: 120px;
+    }
 }
 
 // Actions

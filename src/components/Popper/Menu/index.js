@@ -1,15 +1,16 @@
 import Tippy from '@tippyjs/react/headless';
 import classname from 'classnames/bind';
+import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import styles from './Menu.module.scss';
 import PopperWrapper from '../';
 import MenuItem from './MenuItem';
 import HeaderMenu from './Header';
-import { useState, useEffect } from 'react';
 
 const cx = classname.bind(styles);
 
 function Menu({ items = [], hideOnClick = false, children }) {
-    const [listMenu, setListMenu] = useState([{ data: items, title: 'AAAAAAAAAAAAAA' }]);
+    const [listMenu, setListMenu] = useState([{ data: items }]);
 
     useEffect(() => {
         setListMenu([{ data: items }]);
@@ -63,4 +64,9 @@ function Menu({ items = [], hideOnClick = false, children }) {
     );
 }
 
+Menu.propTypes = {
+    items: PropTypes.array.isRequired,
+    hideOnClick: PropTypes.bool,
+    children: PropTypes.node.isRequired,
+};
 export default Menu;

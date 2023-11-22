@@ -25,12 +25,15 @@ function Button({
     className,
     // Nội dung button
     children,
+    // Onclick fnc
+    onClick,
     // props còn lại
     ...rest
 }) {
     let Comp = 'button';
 
     const props = {
+        onClick,
         ...rest,
     };
 
@@ -62,6 +65,18 @@ function Button({
 }
 
 Button.propTypes = {
+    to: PropTypes.string,
+    href: PropTypes.string,
+    text: PropTypes.bool,
+    primary: PropTypes.bool,
+    outline: PropTypes.bool,
+    rounded: PropTypes.bool,
+    small: PropTypes.bool,
+    large: PropTypes.bool,
+    disabled: PropTypes.bool,
+    leftIcon: PropTypes.node,
+    rightIcon: PropTypes.node,
+    className: PropTypes.string,
     children: PropTypes.node.isRequired,
 };
 

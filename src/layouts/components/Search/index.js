@@ -100,7 +100,7 @@ function Search() {
                         </button>
                     )}
                     {loading && <SpinnerIcon className={cx('loading')} />}
-                    <span className={cx('span-spliter')}></span>
+                    <span className={cx('span-splitter')}></span>
                     <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                         <SearchIcon />
                     </button>
