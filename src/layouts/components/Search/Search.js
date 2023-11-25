@@ -14,23 +14,23 @@ const cx = classname.bind(styles);
 function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [searchValue, setSearchValue] = useState('');
-    const [showResults, setShowResults] = useState(true);
+    const [showResults, setShowResults] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const debounced = useDebounce(searchValue, 500);
+    const debounceValue = useDebounce(searchValue, 500);
     const inputRef = useRef();
 
     useEffect(() => {
-        if (!debounced.trim()) {
+        if (!debounceValue.trim()) {
             setSearchResult([]);
             return;
         }
 
         const fetchApi = async () => {
             setLoading(true);
-            const searchResult = await searchServices.search(debounced);
-            if (searchResult.length > 0) {
-                setSearchResult(searchResult);
+            const _searchResult = await searchServices.search(debounceValue);
+            if (_searchResult.length > 0) {
+                setSearchResult(_searchResult);
                 setLoading(false);
             } else {
                 alert('Không có kết quả trả về :)) ');
@@ -41,7 +41,7 @@ function Search() {
         fetchApi();
 
         //encodeURIComponent -- chuyển ký tự đặc biệt như &, ^ , # sang kiểu khác tránh làm lỗi url
-    }, [debounced]);
+    }, [debounceValue]);
 
     const handleClear = () => {
         setSearchValue('');
@@ -78,8 +78,9 @@ function Search() {
                     <div className={cx('search-result')} tabIndex="-1" {...attrs}>
                         <PopperWrapper>
                             <h4 className={cx('search-title')}>Accounts</h4>
-                            {searchResult.length > 0 &&
-                                searchResult.map((result) => <AccountItem data={result} key={result.id} />)}
+                            {searchResult.map((result) => (
+                                <AccountItem data={result} key={result.id} />
+                            ))}
                         </PopperWrapper>
                     </div>
                 )}

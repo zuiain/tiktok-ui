@@ -26,10 +26,11 @@
 
     input {
         flex: 1;
+        height: 100%;
         color: var(--black-color);
         font-size: 1.6rem;
         background-color: transparent;
-        height: 100%;
+        padding-right: 40px;
         caret-color: var(--primary-color);
 
         &:not(:placeholder-shown) ~ .search-btn {

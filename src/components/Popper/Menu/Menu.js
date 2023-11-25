@@ -9,7 +9,7 @@ import HeaderMenu from './HeaderMenu';
 
 const cx = classname.bind(styles);
 
-function Menu({ items = [], hideOnClick = false, children }) {
+function Menu({ items = [], hideOnClick = false, children, onChange = () => {} }) {
     const [listMenu, setListMenu] = useState([{ data: items }]);
 
     useEffect(() => {
@@ -28,11 +28,31 @@ function Menu({ items = [], hideOnClick = false, children }) {
                     onClick={() => {
                         if (!!item.children) {
                             setListMenu((pre) => [...pre, item.children]);
+                        } else {
+                            onChange(item);
+                            alert('Please select an item menu has child');
                         }
                     }}
                 />
             );
         });
+    };
+
+    const renderResult = (attrs) => (
+        <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
+            <PopperWrapper className={cx('menu-box')}>
+                {listMenu.length > 1 && <HeaderMenu title={currentMenu.title} onBack={handleBack} />}
+                <div className={cx('main-menu')}>{renderItems()}</div>
+            </PopperWrapper>
+        </div>
+    );
+
+    const handleResetMenu = () => {
+        setListMenu((pre) => pre.slice(0, 1));
+    };
+
+    const handleBack = () => {
+        setListMenu((pre) => pre.slice(0, pre.length - 1));
     };
 
     return (
@@ -42,22 +62,8 @@ function Menu({ items = [], hideOnClick = false, children }) {
             interactive
             placement="bottom-end"
             hideOnClick={hideOnClick}
-            render={(attrs) => (
-                <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper className={cx('menu-box')}>
-                        {listMenu.length > 1 && (
-                            <HeaderMenu
-                                title={currentMenu.title}
-                                onBack={() => {
-                                    setListMenu((pre) => pre.slice(0, pre.length - 1));
-                                }}
-                            />
-                        )}
-                        <div className={cx('main-menu')}>{renderItems()}</div>
-                    </PopperWrapper>
-                </div>
-            )}
-            onHide={() => setListMenu((pre) => pre.slice(0, 1))}
+            render={renderResult}
+            onHide={handleResetMenu}
         >
             {children}
         </Tippy>
@@ -69,4 +75,5 @@ Menu.propTypes = {
     hideOnClick: PropTypes.bool,
     children: PropTypes.node.isRequired,
 };
+
 export default Menu;

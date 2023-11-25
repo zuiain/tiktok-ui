@@ -18,7 +18,7 @@ import Search from '../Search';
 const cx = classname.bind(styles);
 
 function Header() {
-    const [user] = useState({ connect: true, numberMessage: 3 });
+    const [user] = useState({ connect: false, numberMessage: 3 });
 
     return (
         <header className={cx('wrapper')}>
@@ -56,7 +56,7 @@ function Header() {
                             <Button text to="./upload">
                                 Upload
                             </Button>
-                            <Button primary>Log in</Button>
+                            <Button primary>Log in</Button>{' '}
                         </>
                     )}
                     <Menu items={user.connect ? config.menu.userMenu : config.menu.defaultMenu}>
