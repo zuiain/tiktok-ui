@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import FeedbackPage from '~/pages/Feedback';
+import { FeedbackPage } from '~/pages/';
 
 function FeedbackRoutes() {
     return (

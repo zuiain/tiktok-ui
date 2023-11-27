@@ -5,6 +5,7 @@ function FollowingRoutes() {
         <>
             <Routes>
                 <Route index element={<Following />}></Route>
+                <Route path="/:slug" element={<Following />}></Route>
             </Routes>
         </>
     );

@@ -4,6 +4,8 @@ import ProfileRoutes from './ProfileRoutes';
 import UploadRoutes from './UploadRoutes';
 import SearchRoutes from './SearchRoutes';
 import FeedbackRoutes from './FeedbackRoute';
+import ExploreRoute from './ExploreRoute';
+import LiveRoute from './LiveRoute';
 
 // pages
 import HomePage from '~/pages/Home';
@@ -25,6 +27,8 @@ const publicRoutes = [
             { path: config.routes.home, element: <HomePage /> },
             { path: config.routes.following, element: <FollowingRoutes /> },
             { path: config.routes.profile, element: <ProfileRoutes /> },
+            { path: config.routes.explore, element: <ExploreRoute /> },
+            { path: config.routes.live, element: <LiveRoute /> },
         ],
     },
     {

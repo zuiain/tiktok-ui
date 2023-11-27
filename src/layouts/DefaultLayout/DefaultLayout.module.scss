@@ -5,15 +5,18 @@
 }
 
 .container {
-    margin-top: var(--default-layout-header-height);
-    width: var(--default-layout-width);
-    min-height: 1000px;
     display: flex;
-    padding: 0px var(--default-layout-horizontal-spacer);
+    width: var(--default-layout-width);
+    max-width: 100%;
+    min-height: 1000px;
+    margin-top: var(--default-layout-header-height);
+    padding: 0px;
 }
 
 .content {
     flex: 1;
-    background-color: #edeaea;
+    background-color: var(--white-color);
     min-height: 1000px;
+    text-align: center;
+    padding-top: var(--default-layout-padding-top);
 }

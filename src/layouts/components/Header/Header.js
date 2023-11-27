@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import classname from 'classnames/bind';
+import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,7 +15,7 @@ import Button from '~/components/Button';
 import Image from '~/components/Image';
 import Search from '../Search';
 
-const cx = classname.bind(styles);
+const cx = classNames.bind(styles);
 
 function Header() {
     const [user] = useState({ connect: false, numberMessage: 3 });
