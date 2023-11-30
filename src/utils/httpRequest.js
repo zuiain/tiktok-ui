@@ -11,4 +11,12 @@ const get = async (path, options = {}) => {
     return res.data;
 };
 
-export { request, get };
+// customize post
+const post = async (path, options = {}) => {
+    const res = await request.post(path, options);
+    return res.data;
+};
+
+const httpRequest = { request, get, post };
+
+export default httpRequest;

@@ -2,10 +2,10 @@ import { forwardRef, useState } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import images from '~/assets/images/';
+import Images from '~/assets/images/';
 import styles from './Image.module.scss';
 
-const Image = forwardRef(({ src, alt, className, fallback = images.noImage, ...props }, ref) => {
+const Image = forwardRef(({ src, alt, className, fallback = Images.noImage, ...props }, ref) => {
     const [errImgSrc, setErrImgSrc] = useState('');
     return (
         <img

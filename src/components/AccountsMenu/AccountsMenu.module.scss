@@ -1,0 +1,101 @@
+// suggested accounts
+
+.wrapper {
+    border-top: 1px solid #ccc;
+    margin: 18px 0px;
+}
+
+.label {
+    color: rgba(var(--gray-color-rgb), 0.7);
+    font-weight: 600;
+    font-size: 1.6rem;
+    margin: 18px 0px;
+    padding: 0px 8px;
+}
+
+.more-btn {
+    font-size: 1.4rem;
+    color: rgb(255, 44, 85);
+    padding: 8px;
+    cursor: pointer;
+}
+
+// account item
+.account-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0px;
+    padding: 0px 8px;
+    line-height: 1.6rem;
+    cursor: pointer;
+
+    .avatar {
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        object-fit: cover;
+    }
+
+    .item-info {
+        flex: 1;
+        margin-left: 12px;
+
+        .name {
+            font-weight: 400;
+            font-size: 1.4rem;
+        }
+
+        .nickname {
+            font-size: 1.2rem;
+            color: rgba(var(--gray-color-rgb), 0.6);
+        }
+    }
+}
+
+.check-icon {
+    color: aqua;
+    margin: 0px 0px 4px 4px;
+    font-size: 1.4rem;
+}
+
+.preview {
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 18px;
+
+    .preview-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .preview-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .preview-follow-btn {
+            padding: 5px 16px;
+        }
+    }
+
+    .preview-content {
+        margin: 10px 0px;
+        .preview-nickname {
+            font-size: 1.4rem;
+        }
+    }
+
+    .preview-bottom {
+        .preview-followers {
+            margin: 0px 8px 0px 4px;
+            color: rgba(var(--gray-color-rgb), 0.5);
+        }
+        .preview-likes {
+            margin-left: 4px;
+            color: rgba(var(--gray-color-rgb), 0.5);
+        }
+    }
+}

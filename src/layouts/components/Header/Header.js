@@ -8,7 +8,7 @@ import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 
 import config from '~/config';
 import Icons from '~/components/Icons/';
-import images from '~/assets/images';
+import Images from '~/assets/images';
 import styles from './Header.module.scss';
 import Menu from '~/components/Popper/Menu';
 import Button from '~/components/Button';
@@ -25,7 +25,7 @@ function Header() {
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
                     <Link to={config.routes.home} className={cx('logo-link')}>
-                        <img src={images.logo} alt="Tik Tok" />
+                        <img src={Images.logo} alt="Tik Tok" />
                     </Link>
                 </div>
 

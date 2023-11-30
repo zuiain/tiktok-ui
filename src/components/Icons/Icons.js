@@ -1,6 +1,6 @@
-import images from '~/assets/images';
+import Images from '~/assets/images';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck, faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const UploadIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => {
     return (
@@ -26,7 +26,7 @@ const UploadIcon = ({ className, width = '3.2rem', height = '3.2rem' }) => {
 const FlyIcon = ({ className, width = '16px', height = '16px' }) => {
     return (
         <>
-            <img className={className} width={width} height={height} src={images.paperPlane} alt="paper-plane--v1" />
+            <img className={className} width={width} height={height} src={Images.paperPlane} alt="paper-plane--v1" />
         </>
     );
 };
@@ -34,7 +34,7 @@ const FlyIcon = ({ className, width = '16px', height = '16px' }) => {
 const MessageIcon = ({ className, width = '16px', height = '16px' }) => {
     return (
         <>
-            <img className={className} width={width} height={height} src={images.message} alt="paper-plane--v1" />
+            <img className={className} width={width} height={height} src={Images.message} alt="paper-plane--v1" />
         </>
     );
 };
@@ -247,8 +247,17 @@ const CameraActiveIcon = ({ className, width = '3.2rem', height = '3.2rem' }) =>
     );
 };
 
+const CheckIcon = ({ className, width = '1.6rem', height = '1.6rem' }) => {
+    return (
+        <>
+            <FontAwesomeIcon icon={faCircleCheck} className={className} width={width} height={height} />
+        </>
+    );
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
+    CheckIcon,
     UploadIcon,
     FlyIcon,
     MessageIcon,
